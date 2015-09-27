@@ -1,0 +1,39 @@
+Air Quality Dataset Analysis
+========================================================
+author: Mathew Bramson
+date: September 27, 2015
+
+Synposis
+========================================================
+
+This applications allows the user to explore the Air Quality Dataset from the datasets package.
+
+Capabilities
+
+- Plotting
+- Linear Regression Modeling
+- Model Predictor Selection
+
+The Dataset
+========================================================
+
+```{r}
+data(airquality)
+str(airquality)
+```
+
+Plotting Example
+========================================================
+
+```{r, echo=FALSE}
+library(ggplot2)
+qplot(x = Ozone, y = Temp, color = Wind, data=airquality, geom="point", size=I(5))
+```
+
+Linear Regression Example
+========================================================
+```{r, echo=FALSE, fig.height=10}
+library(caret)
+model <- train(Ozone ~ ., data=airquality, method="lm")
+summary(model)
+```
